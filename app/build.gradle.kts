@@ -3,7 +3,6 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
-
 }
 
 android {
@@ -16,8 +15,10 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Agregar la clave de API como una variable de compilación
+        buildConfigField("String", "TMDB_API_KEY", "\"${project.findProperty("TMDB_API_KEY") ?: ""}\"")
     }
 
     buildTypes {
@@ -40,10 +41,8 @@ android {
         buildConfig = true
     }
 }
-    val apiKey: String = project.findProperty("TMDB_API_KEY") as String? ?: ""
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -60,35 +59,28 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-        // Jetpack Compose
-        implementation("androidx.compose.ui:ui:1.5.0")
-        implementation("androidx.compose.material3:material3:1.1.1")
-        implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")
-        debugImplementation("androidx.compose.ui:ui-tooling:1.5.0")
+    // Jetpack Compose
+    implementation("androidx.compose.ui:ui:1.5.0")
+    implementation("androidx.compose.material3:material3:1.1.1")
+    implementation("androidx.compose.ui:ui-tooling-preview:1.5.0")
+    debugImplementation("androidx.compose.ui:ui-tooling:1.5.0")
 
-        // Navigation Compose
-        implementation("androidx.navigation:navigation-compose:2.7.2")
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.7.2")
 
-        // Lifecycle (ViewModel y LiveData)
-        implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-        implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    // Lifecycle (ViewModel y LiveData)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 
-        // Retrofit (Consumo de API)
-        implementation("com.squareup.retrofit2:retrofit:2.9.0")
-        implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-        implementation("io.coil-kt:coil-compose:2.2.2")
-        implementation("androidx.navigation:navigation-compose:2.7.6")
-
-
+    // Retrofit (Consumo de API)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // Coil (Carga de imágenes)
-        implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation("io.coil-kt:coil-compose:2.2.2")
 
-        // Room (Persistencia local)
-        implementation("androidx.room:room-runtime:2.5.0")
-        kapt("androidx.room:room-compiler:2.5.0")
-        implementation("androidx.room:room-ktx:2.5.0")
-
-
-
+    // Room (Persistencia local)
+    implementation("androidx.room:room-runtime:2.5.0")
+    kapt("androidx.room:room-compiler:2.5.0")
+    implementation("androidx.room:room-ktx:2.5.0")
 }

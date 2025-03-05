@@ -1,11 +1,11 @@
 package com.example.apipractica.data.repository
 
+import com.example.apipractica.Network.MovieResponse
 import com.example.apipractica.Network.RetrofitClient
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class MovieRepository {
-    suspend fun getPopularMovies() = withContext(Dispatchers.IO) {
-        RetrofitClient.apiService.getPopularMovies()
+    suspend fun getPopularMovies(): Response<MovieResponse> {
+        return RetrofitClient.apiService.getPopularMovies()
     }
 }
