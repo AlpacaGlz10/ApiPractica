@@ -11,10 +11,10 @@ import com.example.apipractica.ui.theme.screen.MovieCard
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MovieList(movies: List<Movie>, navController: NavController) { // <-- Agregado navController
+fun MovieList(movies: List<Movie>, navController: NavController) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
         items(movies) { movie ->
-            MovieCard(movie, navController) // <-- Pasamos el navController
+            MovieCard(movie, navController)
         }
     }
 }

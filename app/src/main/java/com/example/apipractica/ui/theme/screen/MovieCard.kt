@@ -19,13 +19,13 @@ import androidx.compose.ui.Modifier
 
 
 @Composable
-fun MovieCard(movie: Movie, navController: NavController) { // <-- Agregado navController
+fun MovieCard(movie: Movie, navController: NavController) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("movie_detail/${movie.id}") // <-- Navegar al detalle
+                navController.navigate("movie_detail/${movie.id}")
             },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
